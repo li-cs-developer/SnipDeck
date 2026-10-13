@@ -1,3 +1,7 @@
+[🇬🇧 English](README.md) • [🇫🇷 Français](README.fr.md)
+
+---
+
 # 📋 SnipDeck
 
 > 💡 **A Windows clipboard manager that stores, searches, and restores your copy history — offline, private, and fast.**
@@ -155,55 +159,55 @@ The only way to make this cleaner would be to remove the arrow from `App → Loc
 ## 📁 Project Structure
 
 ```
-SnipDeck/
-├── assets/                               ← source assets (logo, etc.)
-├── build/                                ← build & packaging scripts
-│   ├── version.props                     ← central version number
-│   ├── publish.ps1                       ← publish script
-│   ├── installer.iss                     ← Inno Setup installer script
-│   └── output/                           ← git-ignored publish output
-├── docs/                                 ← long-form documentation
-├── src/
-│   ├── SnipDeck.Core/                    ← class library, no UI
-│   │   ├── Models/                       ← ClipboardItem hierarchy
-│   │   ├── Services/                     ← Monitor, Accessor, Stores, CrashLog
-│   │   ├── Search/                       ← Fuzzy + Simple search implementations
-│   │   ├── Settings/                     ← AppSettings + JsonSettingsService
-│   │   └── Interop/                      ← NativeMethods, HotkeyManager
-│   │
-│   ├── SnipDeck.Localization/            ← class library, resources
-│   │   ├── Strings.resx                  ← en-CA strings
-│   │   ├── Strings.fr-CA.resx            ← fr-CA strings
-│   │   ├── Loc.cs                        ← Loc.T(key) API + LanguageChanged event
-│   │   ├── LocSource.cs                  ← INotifyPropertyChanged indexer for XAML
-│   │   └── LocExtension.cs               ← {loc:Loc Key} markup extension
-│   │
-│   ├── SnipDeck.App/                     ← WPF executable
-│   │   ├── Views/                        ← MainWindow, SettingsWindow, ToastWindow
-│   │   ├── ViewModels/                   ← MVVM view models
-│   │   ├── Controls/                     ← Template selectors
-│   │   ├── Converters/                   ← Value converters
-│   │   ├── Themes/                       ← Shared / Light / Dark + ThemeManager
-│   │   ├── Tray/                         ← TrayIconHost
-│   │   ├── Services/                     ← AutoStartHelper, ToastDescription
-│   │   ├── Resources/                    ← app.ico
-│   │   └── app.manifest                  ← DPI awareness, no UAC
-│   │
-│   └── SnipDeck.Tests/                   ← xUnit test project
-│       ├── AppSettingsTests.cs
-│       ├── FilterViewModelTests.cs
-│       ├── FuzzySearchServiceTests.cs
-│       ├── ImageFileStoreTests.cs
-│       ├── JsonHistoryStoreTests.cs
-│       └── LocalizationTests.cs
-│
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── LICENSE
-├── PRIVACY.md
-├── README.md
-└── SnipDeck.slnx
+    SnipDeck/
+    ├── assets/                               ← source assets (logo, etc.)
+    ├── build/                                ← build & packaging scripts
+    │   ├── version.props                     ← central version number
+    │   ├── publish.ps1                       ← publish script
+    │   ├── installer.iss                     ← Inno Setup installer script
+    │   └── output/                           ← git-ignored publish output
+    ├── docs/                                 ← long-form documentation
+    ├── src/
+    │   ├── SnipDeck.Core/                    ← class library, no UI
+    │   │   ├── Models/                       ← ClipboardItem hierarchy
+    │   │   ├── Services/                     ← Monitor, Accessor, Stores, CrashLog
+    │   │   ├── Search/                       ← Fuzzy + Simple search implementations
+    │   │   ├── Settings/                     ← AppSettings + JsonSettingsService
+    │   │   └── Interop/                      ← NativeMethods, HotkeyManager
+    │   │
+    │   ├── SnipDeck.Localization/            ← class library, resources
+    │   │   ├── Strings.resx                  ← en-CA strings
+    │   │   ├── Strings.fr-CA.resx            ← fr-CA strings
+    │   │   ├── Loc.cs                        ← Loc.T(key) API + LanguageChanged event
+    │   │   ├── LocSource.cs                  ← INotifyPropertyChanged indexer for XAML
+    │   │   └── LocExtension.cs               ← {loc:Loc Key} markup extension
+    │   │
+    │   ├── SnipDeck.App/                     ← WPF executable
+    │   │   ├── Views/                        ← MainWindow, SettingsWindow, ToastWindow
+    │   │   ├── ViewModels/                   ← MVVM view models
+    │   │   ├── Controls/                     ← Template selectors
+    │   │   ├── Converters/                   ← Value converters
+    │   │   ├── Themes/                       ← Shared / Light / Dark + ThemeManager
+    │   │   ├── Tray/                         ← TrayIconHost
+    │   │   ├── Services/                     ← AutoStartHelper, ToastDescription
+    │   │   ├── Resources/                    ← app.ico
+    │   │   └── app.manifest                  ← DPI awareness, no UAC
+    │   │
+    │   └── SnipDeck.Tests/                   ← xUnit test project
+    │       ├── AppSettingsTests.cs
+    │       ├── FilterViewModelTests.cs
+    │       ├── FuzzySearchServiceTests.cs
+    │       ├── ImageFileStoreTests.cs
+    │       ├── JsonHistoryStoreTests.cs
+    │       └── LocalizationTests.cs
+    │
+    ├── .editorconfig
+    ├── .gitattributes
+    ├── .gitignore
+    ├── LICENSE
+    ├── PRIVACY.md
+    ├── README.md
+    └── SnipDeck.slnx
 ```
 
 ---
