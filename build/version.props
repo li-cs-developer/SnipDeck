@@ -1,0 +1,10 @@
+<Project>
+
+  <PropertyGroup>
+    <SnipDeckVersion>0.1.0</SnipDeckVersion>
+    <SnipDeckFileVersion>0.1.0.0</SnipDeckFileVersion>
+    <SnipDeckInformationalVersion>0.1.0-alpha</SnipDeckInformationalVersion>
+    <SnipDeckAuthor>CYL</SnipDeckAuthor>
+  </PropertyGroup>
+
+</Project>

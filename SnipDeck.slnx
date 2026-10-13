@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SnipDeck.App/SnipDeck.App.csproj" />
+    <Project Path="src/SnipDeck.Core/SnipDeck.Core.csproj" />
+    <Project Path="src/SnipDeck.Localization/SnipDeck.Localization.csproj" />
+    <Project Path="src/SnipDeck.Tests/SnipDeck.Tests.csproj" />
+  </Folder>
+</Solution>

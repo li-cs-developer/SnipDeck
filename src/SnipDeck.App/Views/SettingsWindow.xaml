@@ -1,0 +1,85 @@
+<Window x:Class="SnipDeck.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:SnipDeck.Localization;assembly=SnipDeck.Localization"
+        Icon="/Resources/app.ico"
+        Title="{loc:Loc SettingsWindowTitle}" Height="420" Width="440"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        Background="{DynamicResource AppBackgroundBrush}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{loc:Loc SettingsMaxHistory}" Width="180"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="13"/>
+            <ComboBox x:Name="HistorySizeCombo"
+                      Width="100"
+                      Style="{DynamicResource ThemedComboBoxStyle}"
+                      SelectedItem="{Binding MaxHistoryItems}"/>
+        </StackPanel>
+
+        <CheckBox Grid.Row="1" Content="{loc:Loc SettingsStartWithWindows}"
+                  IsChecked="{Binding StartWithWindows}" Margin="0,0,0,12"
+                  Foreground="{DynamicResource TextPrimaryBrush}"
+                  FontSize="13"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{loc:Loc SettingsTheme}" Width="180"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="13"/>
+            <ComboBox Width="140"
+                      Style="{DynamicResource ThemedComboBoxStyle}"
+                      SelectedValue="{Binding Theme}"
+                      SelectedValuePath="Tag">
+                <ComboBoxItem Content="{loc:Loc SettingsThemeSystem}" Tag="System"/>
+                <ComboBoxItem Content="{loc:Loc SettingsThemeLight}"  Tag="Light"/>
+                <ComboBoxItem Content="{loc:Loc SettingsThemeDark}"   Tag="Dark"/>
+            </ComboBox>
+        </StackPanel>
+
+        <CheckBox Grid.Row="3" Content="{loc:Loc SettingsShowToasts}"
+                  IsChecked="{Binding ShowToasts}" Margin="0,0,0,12"
+                  Foreground="{DynamicResource TextPrimaryBrush}"
+                  FontSize="13"
+                  ToolTip="{loc:Loc SettingsShowToastsTooltip}"/>
+
+        <CheckBox Grid.Row="4" Content="{loc:Loc SettingsUseFuzzy}"
+                  IsChecked="{Binding UseFuzzySearch}" Margin="0,0,0,12"
+                  Foreground="{DynamicResource TextPrimaryBrush}"
+                  FontSize="13"
+                  ToolTip="{loc:Loc SettingsUseFuzzyTooltip}"/>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{loc:Loc SettingsLanguage}" Width="180"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="13"/>
+            <ComboBox Width="200"
+                      Style="{DynamicResource ThemedComboBoxStyle}"
+                      SelectedValue="{Binding Language}"
+                      SelectedValuePath="Tag">
+                <ComboBoxItem Content="{loc:Loc SettingsLanguageEnCa}" Tag="en-CA"/>
+                <ComboBoxItem Content="{loc:Loc SettingsLanguageFrCa}" Tag="fr-CA"/>
+            </ComboBox>
+        </StackPanel>
+
+        <Button Grid.Row="7" Content="{loc:Loc SettingsClose}"
+                HorizontalAlignment="Right"
+                Style="{DynamicResource FlatButtonStyle}"
+                Click="Close_Click"/>
+    </Grid>
+</Window>

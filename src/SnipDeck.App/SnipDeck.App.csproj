@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\build\version.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SnipDeck.Core\SnipDeck.Core.csproj" />
+    <ProjectReference Include="..\SnipDeck.Localization\SnipDeck.Localization.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+    <AssemblyName>SnipDeck</AssemblyName>
+    <Product>SnipDeck</Product>
+    <AssemblyTitle>SnipDeck</AssemblyTitle>
+    <Company>Tonko</Company>
+    <Version>$(SnipDeckVersion)</Version>
+    <FileVersion>$(SnipDeckFileVersion)</FileVersion>
+    <InformationalVersion>$(SnipDeckVersion)</InformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <Resource Include="Resources\app.ico" />
+  </ItemGroup>
+
+</Project>
