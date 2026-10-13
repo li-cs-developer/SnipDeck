@@ -6,6 +6,15 @@ SnipDeck is a **tray application** that keeps a searchable history of everything
 
 ---
 
+## 🔗 Project Links
+
+| 📖 **Confluence** | [SnipDeck Documentation](https://li-cs-developer.atlassian.net/wiki/x/AwAY) |
+|---|---|
+| 🎫 **Jira** | [SNIP Project Board](https://li-cs-developer.atlassian.net/jira/software/projects/SNIP/list) |
+| 📦 **Releases** | [GitHub Releases](https://github.com/li-cs-developer/SnipDeck/releases) |
+
+---
+
 ## ✨ Features
 
 ### 📋 Capture
@@ -40,18 +49,6 @@ SnipDeck is a **tray application** that keeps a searchable history of everything
 - 💾 **Persistent history** — survives restart
 - 📊 **Configurable history size** — 50 / 100 / 200 / 400 / 800 items (tiered)
 - 🧹 **Automatic image cleanup** — PNGs deleted when their item is evicted
-
----
-
-## 🔗 Project Links
-
-| | |
-|---|---|
-| 📖 **Confluence** | [SnipDeck Documentation](https://li-cs-developer.atlassian.net/wiki/x/AwAY) |
-| 🎫 **Jira** | [SNIP Project Board](https://li-cs-developer.atlassian.net/jira/software/projects/SNIP/list) |
-| 🐙 **Repository** | [github.com/li-cs-developer/SnipDeck](https://github.com/li-cs-developer/SnipDeck) |
-| 📦 **Releases** | [github.com/li-cs-developer/SnipDeck/releases](https://github.com/li-cs-developer/SnipDeck/releases) |
-
 
 ---
 
@@ -99,40 +96,40 @@ The only way to make this cleaner would be to remove the arrow from `App → Loc
 ### Data flow — clipboard capture
 
 ```
-        ┌──────────────────────────┐
-        │   Windows OS Clipboard   │
-        └────────────┬─────────────┘
-                     │ 500 ms DispatcherTimer tick
-                     ▼
-        ┌──────────────────────────┐         ┌──────────────────────────────┐
-        │  📋 ClipboardMonitor     │────────►│  🛡️ ClipboardExclusionChecker│
-        └────────────┬─────────────┘         └──────────────────────────────┘
-                     │ reads via
-                     ▼
-        ┌──────────────────────────┐
-        │  🔄 ClipboardAccessor    │  (retry-on-COMException)
-        └────────────┬─────────────┘
-                     │ produces
-                     ▼
-        ┌────────────────────────────────────────────────────────┐
-        │  📝 Text  /  🎨 RichText  /  🖼️ Image  /  📄 File       │
-        └────────────┬───────────────────────────────────────────┘
-                     │ ItemCaptured event
-                     ▼
-        ┌──────────────────────────┐         ┌──────────────────────────┐
-        │  🧠 MainViewModel        │────────►│  💾 JsonHistoryStore     │
-        │     (SnipDeck.App)       │  add    │   └─► 🖼️ ImageFileStore  │
-        └────────────┬─────────────┘         └──────────────────────────┘
-                     │ RefreshFilter
-                     ▼
-        ┌──────────────────────────┐
-        │  📚 ObservableCollection │
-        └────────────┬─────────────┘
-                     │ DataBinding
-                     ▼
-        ┌──────────────────────────┐
-        │  🖼️ WPF ListBox          │
-        └──────────────────────────┘
+        ┌──────────────────────────────┐
+        │     Windows OS Clipboard     │
+        └──────────────┬───────────────┘
+                       │ 500 ms DispatcherTimer tick
+                       ▼
+        ┌──────────────────────────────┐          ┌───────────────────────────────┐
+        │       ClipboardMonitor       │─────────►│   ClipboardExclusionChecker   │
+        └──────────────┬───────────────┘          └───────────────────────────────┘
+                       │ reads via
+                       ▼
+        ┌──────────────────────────────┐  (retry-on-COMException)
+        │      ClipboardAccessor       │
+        └──────────────┬───────────────┘
+                       │ produces
+                       ▼
+        ┌──────────────────────────────────────────────┐
+        │         Text / RichText / Image / File       │
+        └──────────────────────┬───────────────────────┘
+                               │ ItemCaptured event
+                               ▼
+        ┌──────────────────────────────┐          ┌──────────────────────────────┐
+        │        MainViewModel         │─────────►│     JsonHistoryStore         │
+        │        (SnipDeck.App)        │   add    │      └─► ImageFileStore      │
+        └──────────────┬───────────────┘          └──────────────────────────────┘
+                       │ RefreshFilter
+                       ▼
+        ┌──────────────────────────────┐
+        │     ObservableCollection     │
+        └──────────────┬───────────────┘
+                       │ DataBinding
+                       ▼
+        ┌──────────────────────────────┐
+        │         WPF ListBox          │
+        └──────────────────────────────┘
 ```
 
 ### Data flow — clipboard restore
